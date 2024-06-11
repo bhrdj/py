@@ -1,8 +1,8 @@
 # story_program-2024_06_05.py
 
-characters = ['Geronimo','Violdelsia','Zayrakoro']
-ages = {'Geronimo':38,'Violdelsia':13,'Zayrakoro':26}
-genders = {'Geronimo':'M','Violdelsia':'F','Zayrakoro':'F'}
+chars = ['Geronimo','Violdelsia','Zayrakoro']
+ages = {chars[0]:38,chars[1]:13,chars[2]:26}
+genders = {chars[0]:'M',chars[1]:'F',chars[2]:'F'}
 adventures = [1,2,3]
 key_challenges = {
         1:'climbing a mountain',
@@ -23,11 +23,24 @@ stories[1] = [
     "Almost instantly, the neighbor's door opened and Violdelsia came running down the dusty farm path, carrying a {1}-colored {2} in her hand."
     ]
 
+input_prompts = {
+    0:'Type something that would have a key and press ENTER: ',
+    1:'Type a color and press ENTER: ',
+    2:'Type something that it could be holding and press ENTER: ',
+    }
+
+default_fillers = {
+    0:'door',
+    1:'blue',
+    2:'bowl'
+    }
+
 print(*['\n']*40)  
 madlib_list = []
-madlib_list.append(input('Type something that would have a key and press ENTER: '))
-madlib_list.append(input('Type a "color" and press ENTER: '))
-madlib_list.append(input('Type something that she could be holding and press ENTER: '))
+for i in input_prompts:
+    new_input = input(input_prompts[i]) 
+    edited_input = new_input if new_input!='' else default_fillers[i]
+    madlib_list.append(edited_input)
 
 print(*['\n']*5)  
 print(*[i.format(*madlib_list) for i in stories[1]])
