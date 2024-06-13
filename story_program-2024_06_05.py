@@ -2,7 +2,7 @@
 
 chars = ['Geronimo','Violdelsia','Zayrakoro'] # watch the index
 ages = {0:38, 1:13, 2:26} # key:value ~ chars_index:age
-genders = {0:'M', 1:'F', 2:'F'} # key:value ~ chars_index:gender
+genders = {0:'Male', 1:'Female', 2:'Female'} # key:value ~ chars_index:gender
 
 adventures = ['a','b','c']
 key_challenges = {
@@ -42,11 +42,13 @@ default_fillers = {
     }
 
 print(*['\n']*40)  
-madlib_list = default_fillers
-for i in input_prompts:
+madlib_dict = default_fillers
+for i in input_prompts: # get the non-empty inputs
     new_input = input(input_prompts[i])
-    if new_input!=i:
-        madlib_list[i] = new_input
+    if new_input!='':
+        madlib_dict[i] = new_input
+
+madlib_list = [madlib_dict[i] for i in sorted(madlib_dict.keys())]
 
 print(*['\n']*5)  
 print(*[i.format(*madlib_list) for i in stories['a']])
