@@ -41,7 +41,7 @@ default_fillers = {
     6:'bowl'
     }
 
-print(*['\n']*40)  
+print(*['\n']*40)
 madlib_dict = default_fillers
 for i in input_prompts: # get the non-empty inputs
     new_input = input(input_prompts[i])
@@ -50,14 +50,14 @@ for i in input_prompts: # get the non-empty inputs
 
 madlib_list = [madlib_dict[i] for i in sorted(madlib_dict.keys())]
 
-print(*['\n']*5)  
+print(*['\n']*5)
 print(*[i.format(*madlib_list) for i in stories['a']])
-print(*['\n']*5)  
+print(*['\n']*5)
 
 def user_def_vars():
     return [i for i in globals() if (
-        i[0]!='_' 
-        and 
+        i[0]!='_'
+        and
         i not in ['In','Out','get_ipython','exit','quit','open']
         )
      ]
