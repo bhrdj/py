@@ -24,6 +24,15 @@ stories['a'] = [
     "Almost instantly, the neighbor's door opened and {1} came running down the dusty farm path, carrying a {5}-colored {6} in her hand."
     ]
 
+stories['b'] = [
+    'Not so long ago, not as long ago as the time of {2}, but still long ago.',
+    'It rained for a month straight, and the valley of Najyven suddenly had a new lake.',
+    'The lake was full of muddy water and sprinkled with swirling dust on the surface.',
+    'Lots and lots of flies and water striders and bees buzzed across the water.',
+    '{2} :',
+    ]
+
+
 input_prompts = {
     3:f'Type something that a {ages[2]}-year old {genders[2]} would yell: ',
     4:'Type something that would have a key and press ENTER: ',
@@ -32,15 +41,16 @@ input_prompts = {
     }
 
 default_fillers = {
-    0:chars[0],
-    1:chars[1],
-    2:chars[2],
+    0:chars[0], # Geronimo
+    1:chars[1], # Viodelsia
+    2:chars[2], # Zayrakoro
     3:'QUICK PLEASE!',
     4:'door',
     5:'blue',
     6:'bowl'
     }
 
+# GET THE INITIAL MADLIB INPUTS INTO madlib_dict
 print(*['\n']*40)
 madlib_dict = default_fillers
 for i in input_prompts: # get the non-empty inputs
@@ -48,8 +58,8 @@ for i in input_prompts: # get the non-empty inputs
     if new_input!='':
         madlib_dict[i] = new_input
 
-madlib_list = [madlib_dict[i] for i in sorted(madlib_dict.keys())]
-
+# PRINT THE MADLIB STORY
+madlib_list = [madlib_dict[i] for i in sorted(madlib_dict.keys())] # get sorted list for str.format display
 print(*['\n']*5)
 print(*[i.format(*madlib_list) for i in stories['a']])
 print(*['\n']*5)
