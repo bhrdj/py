@@ -11,7 +11,7 @@ jokes = [
 
 def tell_joke():
     joke = random.choice(jokes)
-    print("Here's a joke for you:")
+    print("Hey there! Here's a joke for you:")
     print(joke)
 
 if __name__ == "__main__":
